@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     count = REDIS.get(key)
 
     unless count
-      REDIS.set(key, 1)
+      REDIS.set(key, 0)
       REDIS.expire(key, THROTTLE_TIME_WINDOW)
       return true
     end
